@@ -17,7 +17,7 @@ begin_year_pointer = year[0]
 end_year_pointer = year[0]
 count = 0
 
-sportsbook='fanduel'
+sportsbook='pointsbet'
 df_data = []
 
 con = sqlite3.connect("../../Data/odds.sqlite")
@@ -62,5 +62,6 @@ for season1 in tqdm(season):
     begin_year_pointer = year[count]
 
     df = pd.DataFrame(df_data,)
+    #print(df)
     df.to_sql(f"odds_{season1}", con, if_exists="replace")
 con.close()

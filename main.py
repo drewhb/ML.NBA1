@@ -2,7 +2,7 @@ import argparse
 from colorama import Fore, Style
 import pandas as pd
 import tensorflow as tf
-from src.Predict import NN_Runner, XGBoost_Runner
+from src.Predict import  XGBoost_Runner#, NN_Runner
 from src.Utils.Dictionaries import team_index_current
 from src.Utils.tools import create_todays_games_from_odds, get_json_data, to_data_frame, get_todays_games_json, create_todays_games
 from src.DataProviders.SbrOddsProvider import SbrOddsProvider
@@ -99,7 +99,12 @@ def main():
         print("------------Neural Network Model Predictions-----------")
         NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds)
         print("-------------------------------------------------------")
-
+""" 
+Theory to Test on From Money Lines: Teams that are predicted to win but have confidence near 50%, 
+also tend to have expected values (EV) that are deeply negative. Test that. Also, that these teams
+then proceed to blow out there opponents. Test that too. This might even work inversly. Look into
+impact potentially on O/U
+"""
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Model to Run')

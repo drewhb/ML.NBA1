@@ -14,9 +14,19 @@ con.close()
 OU = data['OU-Cover']
 data.drop(['Score', 'Home-Team-Win', 'TEAM_NAME', 'Date', 'TEAM_NAME.1', 'Date.1', 'OU-Cover'], axis=1,
           inplace=True)
+# firstTen = data.head(10)
+# for colName in data.columns:
+#     print(colName)
+# print()
+# print("DF: ")
+# print(firstTen)
 data = data.values
 data = data.astype(float)
 acc_results = []
+
+# result = data[0, :]
+# print("First 1 rows of the NUmpy:")
+# print(result)
 
 for x in tqdm(range(100)):
     x_train, x_test, y_train, y_test = train_test_split(data, OU, test_size=.1)
@@ -28,7 +38,9 @@ for x in tqdm(range(100)):
         'max_depth': 6,
         'eta': 0.05,
         'objective': 'multi:softprob',
-        'num_class': 3
+        'num_class': 3,
+        'tree_method': 'gpu_hist',
+        'gpu_id': 0
     }
     epochs = 300
 

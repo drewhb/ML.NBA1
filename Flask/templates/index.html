@@ -20,13 +20,11 @@
       <table role="grid">
       <thead>
           <th>Teams</th>
-          <th>Fanduel</th>
-          <th>Draftkings</th>
-          <th>Betmgm</th>
+          <th>Points Bet Sports Book</th>
       </thead>
         <tbody>
         <tr>
-          {% for game_key in data.get('fanduel') %}
+          {% for game_key in data.get('pointsbet') %}
           {% set teams = game_key.split(':') %}
           <tr>
             <td width="180px;">
@@ -41,7 +39,7 @@
               </tbody>
             </table>
             </td>
-            {% for sportsbook in ['fanduel', 'draftkings', 'betmgm'] %}
+            {% for sportsbook in ['pointsbet'] %}
             {% set sbgame = data.get(sportsbook)[game_key] %}
             {% if not sbgame or not sbgame.away_team or not sbgame.home_team %}
             <td class="{{sportsbook}}"></td>

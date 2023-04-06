@@ -29,7 +29,9 @@ for x in tqdm(range(100)):
         'max_depth': 2,
         'eta': 0.01,
         'objective': 'multi:softprob',
-        'num_class': 2
+        'num_class': 2,
+        'tree_method': 'gpu_hist',
+        'gpu_id': 0
     }
     epochs = 500
 
