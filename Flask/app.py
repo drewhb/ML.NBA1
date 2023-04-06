@@ -8,9 +8,9 @@ import time
 
 
 @lru_cache()
-def fetch_fanduel(ttl_hash=None):
+def fetch_pointsbet(ttl_hash=None):
     del ttl_hash
-    return fetch_game_data(sportsbook="fanduel")
+    return fetch_game_data(sportsbook="pointsbet")
 
 @lru_cache()
 def fetch_draftkings(ttl_hash=None):
@@ -64,8 +64,8 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 @app.route("/")
 def index():
-    fanduel = fetch_fanduel(ttl_hash=get_ttl_hash())
+    pointsbet = fetch_pointsbet(ttl_hash=get_ttl_hash())
     draftkings = fetch_draftkings(ttl_hash=get_ttl_hash())
     betmgm = fetch_betmgm(ttl_hash=get_ttl_hash())
 
-    return render_template('index.html', today=date.today(), data={"fanduel": fanduel, "draftkings": draftkings, "betmgm": betmgm})
+    return render_template('index.html', today=date.today(), data={"pointsbet": pointsbet, "draftkings": draftkings, "betmgm": betmgm})

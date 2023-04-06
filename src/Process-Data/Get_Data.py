@@ -55,8 +55,10 @@ for season1 in tqdm(season):
                 if month1 > datetime.now().month:
                     continue
             general_data = get_json_data(url.format(month1, day1, begin_year_pointer, end_year_pointer, season1))
+            #print(general_data)
             general_df = to_data_frame(general_data)
             real_date = date(year=end_year_pointer, month=month1, day=day1) + timedelta(days=1)
+            print(real_date)
             general_df['Date'] = str(real_date)
 
             x = str(real_date).split('-')
@@ -66,3 +68,4 @@ for season1 in tqdm(season):
     begin_year_pointer = year[count]
 
 con.close()
+print("Finished saving data")
